@@ -1,0 +1,185 @@
+# 常用函数
+
+```js
+# 选择最后一个标签里面的内容
+document.querySelectorAll('.star')[0].lastElementChild.innerText
+"2433271 人评价" 第一个 star 最后一个标签 标签里面的内容
+
+# a 字符串里面不包含 b 字符串
+a.indexOf(b)=-1
+不包含返回-1，包含返回下标
+
+# sort 比大小 长短
+let max = function (m) {
+    let list = m.sort(function (a, b) {
+        if (a.length > b.length) {
+            return -1
+        } else {
+            return 1
+        }
+    })
+    return list[0]
+}
+
+# 检查 du 的开头是不 e2
+let isGGT = function (e2) {
+    for (const du of s) {
+        if (du.startsWith(e2) === false) {
+            return false
+        }
+    }
+    return true
+}
+
+# 实现长字符串相加(整数)
+function sumStrings(a, b) {
+    //通过补零让a和b对齐
+    //若a比b短，则对a补零
+    while (a.length < b.length) {
+        a = "0" + a;
+    }
+    //若b比a短，则对b补零
+    while (b.length < a.length) {
+        b = "0" + b;
+    }
+    //是否有进位
+    var addOne = 0;
+    //结果数组
+    var result = [];
+    //从个位开始相加
+    for (var i = a.length - 1; i >= 0; i--) {
+        var c1 = Number(a[i])
+        var c2 = Number(b[i])
+        var sum = c1 + c2 + addOne;
+        //若数字相加大于9，则进位
+        if (sum > 9) {
+            result.unshift(sum - 10);
+            addOne = 1;
+        }
+        else {
+            result.unshift(sum);
+            addOne = 0;
+        }
+    }
+    //应付下面的情况：
+    //"99" + "11" => "110"
+    //它最后仍然要进位
+    if (addOne) {
+        result.unshift(addOne);
+    }
+    //应付如下的情况
+    //"01" + "01" => "2"
+    //而不是"02"，所以移除第一位的"0"
+    if (!result[0]) {
+        result.splice(0, 1);
+    }
+    return result.join("");
+} er
+```
+
+# node
+
+```js
+const fs = require('fs')
+引入 fs 库
+fs.readFileSync('./fe8 作业.js', 'utf-8')
+读取文件
+fs.writeFileSync('./哇哈哈.txt', '傻子', 'utf-8')
+当前位置下增加文件 内容（“傻子”）
+```
+
+# 事件
+
+```js
+事件监听 Sea('body').on('click', function () {
+log('点击 body')
+})
+
+事件委托 Sea('body').on('click', '.class', function () {
+log('点击 body 中的 .class 元素')
+})
+```
+
+# 链表
+
+```js
+const log = console.log.bind(console, '阳鹏>')
+
+class Stack2 {
+    constructor() {
+        this.data = []
+    }
+    // push 添加一个元素
+    push(e) {
+        this.data.push(e)
+    }
+    // pop 删除并返回最新添加的元素
+    pop() {
+        var index = this.data.length - 1
+        return this.data.splice(index, 1)
+    }
+    // top 仅返回最新添加的元素
+    top() {
+        var index = this.data.length - 1
+        return this.data.splice(index, 1)
+    }
+    // top 仅返回最新添加的元素
+    size() {
+        // 在 Stack 代码基础上, 给 Stack 类增加一个 size 方法
+        // 返回 Stack 中元素的数量
+        return this.data.length
+    }
+}
+var s = new Stack2()
+s.push('hello')
+s.push('world')
+log(s.pop())
+log(s.pop())
+log(s.top())
+```
+### 哈希表
+大数组里面放小数组小数组里面放链表
+
+
+# 库
+
+```js
+弹窗库
+ 1.在 bootCDN 里搜索 sweetalert2 打开 all 直接复制标签 2. 打开 sweetalert2 复制里面想要的样式的代码放到 script 里面
+
+终极颜色渐变库
+Ultimate CSS Gradient Generator
+
+阴影样式库
+css3generator
+
+css3 动画库
+Animate.css
+
+图表库
+Echarts
+
+模板库
+squarespace.com
+```
+
+# ajax
+
+```js
+fetch('https://api.sea.team/v3/userDefault.get', {
+    method: 'post',
+}).then((res) => {
+    res.json().then((data) => {
+        console.log(data)
+    })
+})
+```
+
+### bigsea 库
+
+```js
+https://github.com/SeaTeam/bigsea.js
+
+引入bigsea
+<script src="https://cdn.jsdelivr.net/npm/bigsea@latest/bigsea.js"></script>
+```

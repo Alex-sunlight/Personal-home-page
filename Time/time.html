@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>时间</title>
+    <style>
+      .time {
+        color: #222222;
+        font-size: 36px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .date {
+        margin-bottom: 10px;
+      }
+      .today {
+        color: #70757a;
+        margin: 0px 0px 2px;
+        font-size: 16px;
+      }
+      .week {
+        color: #70757a;
+        font-size: 16px;
+      }
+      .last {
+        color: #70757a;
+        margin-left: 20;
+        margin-right: 20;
+        font-size: 16px;
+      }
+      .china {
+        color: #70757a;
+        margin: 0px 0px 2px;
+
+        font-size: 16px;
+      }
+      .time-gua {
+        margin-left: 90px;
+      }
+      .xian {
+        width: 800px;
+        height: 1px;
+        background-color: #d5d5d5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="time-gua">
+      <div class="time">下午2:30</div>
+      <div class="date">
+        <span class="today">2021年8月20日</span>
+        <span class="week">(星期五)</span>
+        <span class="last">(GMT+8)</span>
+      </div>
+
+      <div class="china">中国北京时间</div>
+      <br />
+      <div class="xian"></div>
+    </div>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script>
+      const time = function () {
+        let A = dayjs().format("A");
+        if (A === "PM") {
+          A = "下午";
+        } else {
+          A = "上午";
+        }
+        document.querySelector(".time").innerText = A + dayjs().format("h:m:s");
+        document.querySelector(".today").innerText =
+          dayjs().format(" YYYY 年 MM 月 DD 日 ");
+      };
+      setInterval(() => {
+        time();
+      }, 1000);
+    </script>
+  </body>
+</html>
